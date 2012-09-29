@@ -1,13 +1,25 @@
 ---
 layout: post
-title: "A lack of usability in the photo sharing world"
+title: "Usability in photo sharing sites"
 description: ""
 category: 
-tags: []
+tags: [
+	photography,
+	sharing,
+	social,
+	network,
+	flickr,
+	smugmug,
+	interface,
+	design,
+	experience,
+	UX,
+	UI,
+	communities]
 ---
 {% include JB/setup %}
 
-Recently Ive noticed that photo sharing sites (eg. flickr, Smugmug, etc) have rather poor user interfaces and user experience. UI's seem to have become overly complex, pushing rudimentary features out of the way to places that are not immediately accessible or take a bit of work to find. When Im using a photo sharing site, there are a couple of really basic features that I believe should be very prominent upon logging in.
+Recently Ive noticed that photo sharing sites (eg. flickr, Smugmug, etc) have rather poor user interfaces and user experience. UIs seem to have become overly complex, pushing rudimentary features out of the way to places that are not immediately accessible or take a bit of work to find. When Im using a photo sharing site, there are a couple of really basic features that I believe should be very prominent upon logging in.
 
 ## The "upload" button should be VERY easy to find.
 
