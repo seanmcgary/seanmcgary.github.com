@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Usability in photo sharing sites"
+title: "Usability of photo sharing sites"
 description: ""
 category: 
 tags: [
