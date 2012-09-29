@@ -1,4 +1,4 @@
- probabl---
+---
 layout: post
 title: "Building an Editor for MarkdownWiki"
 description: ""
