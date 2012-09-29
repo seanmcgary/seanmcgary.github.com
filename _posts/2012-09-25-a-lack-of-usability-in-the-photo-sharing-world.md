@@ -13,11 +13,11 @@ Recently Ive noticed that photo sharing sites (eg. flickr, Smugmug, etc) have ra
 
 When I first log into flickr, it is not immediately obvious how I can upload photos or videos. 
 
-[Flickr](/assets/flickr_account_page.png)
+![Flickr](/assets/flickr_account_page.png)
 
 When I first see this page, I immediately look at the top row where the various navigation items and menus are. Theres nothing at the root level that links to an upload page. However, under the "You" dropdown is an upload link. For a site that relies on users uploading photos, Id think that they would make it a single click away and very obvious. Instead, they nest one of the most import actions in a dropdown menu. As you make it down the page, you'll realize that there IS an upload link on the main page, however its the same style as their section headers and doesn't immediately stand out. This really should be styled more like a call to action so that it stands out better. Smugmug, in comparison, has an upload link on their top row of navigation, but they require you to first create a gallery if you dont have one, or pick a gallery to upload to if you have already created one. This is definitely a step in the right direction. I'll get to my issues with their gallery structure in a little bit.
 
-[Smugmug](/assets/smugmug_account_page.png)
+![Smugmug](/assets/smugmug_account_page.png)
 
 ## Galleries, sets, and categories oh my!
 
