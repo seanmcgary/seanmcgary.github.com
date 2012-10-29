@@ -24,60 +24,31 @@ This is the first part in what will hopefully be a multipart tutorial as I write
 
 To start off, lets create a file called ```testModule.cpp```. This is where everything (for now) will happen. Heres what we need to start:
 
-```
-#include <node/v8.h>
-#include <node/node.h>
 
-using namespace v8;
-```
+<script src="https://gist.github.com/3971190.js"> </script>
+
+
 Note, this is assuming you have NodeJS installed already and in your path (if you dont, go do that!). We need to import both the Node header and the V8 header.
 
 To build our module, we will be using the ```node-waf``` tool that comes bundled with NodeJS. In the same directory as ```testModule.cpp``` create a file called ```wscript``` and put the following stuff in it:
 
-```
-#!/usr/bin/env python
 
-def set_options(ctx):
-	ctx.tool_options('compiler_cxx')
+<script src="https://gist.github.com/3971198.js"> </script>
 
-def configure(ctx):
-	ctx.check_tool('compiler_cxx')
-	ctx.check_tool('node_addon')
-
-def build(ctx):
-	t = ctx.new_task_gen('cxx', 'shlib', 'node_addon')
-
-	t.source = ['testModule.cpp']
-
-	t.target = 'testModule'
-```
 
 The wscript file sets up needed environment variables and libraries that need to be linked at compile time. Think of it as some kind of makefile. The ```t.target``` property needs to match up to the name of the export property in your module (I'll point this out when we get there).
 
 Now, to build your module simply run the following:
 
-```
-$ node-waf configure
-$ node-waf build
-```
+
+<script src="https://gist.github.com/3971199.js"> </script>
+
 
 Alright, now that we have those basics out of the way, lets make a module that when called, returns the string "Hello World". 
 
-```
-#include <node/v8.h>
-#include <node/node.h>
 
-using namespace v8;
+<script src="https://gist.github.com/3971202.js"> </script>
 
-Handle<Value> SomeFunction(const Arguments &args){
-	HandleScope scope;
-	
-	//...do some other work here if you want
-	
-	// return the string "Hello World"
-	return scope.Close(String::New("Hello World"));
-}
-```
 
 So to quote the V8 handbook:
 
@@ -87,60 +58,29 @@ So to quote the V8 handbook:
 
 So if we were to think of this in javascript, we'd basically have something like:
 
-```
-var SomeFunction = function(){
-	return "Hello World";
-}
-```
+
+<script src="https://gist.github.com/3971204.js"> </script>
+
 
 So now that we have a function that can do some kind of work, how do we expose it to Node? Lets take a look:
 
 
-```
-#include <node/v8.h>
-#include <node/node.h>
+<script src="https://gist.github.com/3971206.js"> </script>
 
-using namespace v8;
-
-Handle<Value> SomeFunction(const Arguments &args){
-	HandleScope scope;
-	
-	//...do some other work here if you want
-	
-	// return the string "Hello World"
-	return scope.Close(String::New("Hello World"));
-}
-
-void TestModule(Handle<Object> target){
-	NODE_SET_METHOD(target, "someFunction", SomeFunction);
-}
-
-NODE_MODULE(testModule, TestModule);
-```
 
 The function ```TestModule``` takes an object handle and basically shoves our function in it. This is how exports work in C++. In javascript we'd have:
 
-```
-var SomeFunction = function(){
-	return "Hello World";
-}
 
-exports.someFunction = SomeFunction;
-```
+<script src="https://gist.github.com/3971207.js"> </script>
+
 
 Now, a note on the ```NODE_MODULE(…)``` line. Before when I said ```t.target``` needed to match, this is where it needs to. The first argument of ```NODE_MODULE``` needs to be the same as your target value.
 
 Once you have all of that, build your new node module. To try it out, run node and import your module.
 
-```
-$ node
-> var test = require('./build/Release/testModule.node');
-undefined
-> test
-{ someFunction: [Function] }
-> test.someFunction()
-'Hello World'
-```
+
+<script src="https://gist.github.com/3971211.js"> </script>
+
 
 That's it! You now have your first native module. In my next post, we'll dig deeper into building something a bit more substantial. One of the main draws of NodeJS is its asynchronous nature, so next time we'll take a look at how to go about building a module with asynchronous function using libuv that its at the very core of NodeJS.
 
